@@ -500,7 +500,7 @@
     "_N$string": "女神一号",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
-    "_N$overflow": 0
+    "_N$overflow": 2
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -536,7 +536,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80,
+      "width": 0,
       "height": 40
     },
     "_children": [],
@@ -582,7 +582,7 @@
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
-    "_N$string": "弃牌",
+    "_N$string": "",
     "_N$horizontalAlign": 0,
     "_N$verticalAlign": 0,
     "_N$overflow": 0
@@ -1276,7 +1276,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 97.5,
+      "width": 24.38,
       "height": 25
     },
     "_children": [],
@@ -1324,7 +1324,7 @@
       "__uuid__": "9568f252-0995-4e26-8913-397d654e6de1"
     },
     "_isSystemFontUsed": false,
-    "_N$string": "1200",
+    "_N$string": "0",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$overflow": 0
@@ -1478,6 +1478,9 @@
     },
     "allmoney": {
       "__id__": 21
+    },
+    "mainNode": {
+      "__id__": 2
     },
     "side_node": {
       "__id__": 25

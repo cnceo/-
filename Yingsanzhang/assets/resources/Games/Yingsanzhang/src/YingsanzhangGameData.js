@@ -33,13 +33,14 @@ cc.Class({
                         //                  = {nCardType}   // 牌类型
                         //                  = {nLookFlag}   // 是否看牌
                         //                  = {nGiveupFlag}   //是否弃牌
+                        //                  = {nTotalMoney}   //总钱数
                         //                  = {puke[0,1,3]}      //牌
         puke:[],  //玩家的当前牌，
         nAccountID:0,
         nBattleID:0,
         nLogicStatus:0,//状态
-        nLogicTS:0, // 当前状态时间戳，用于判定超时自动出牌 
-        nCurSit:0, // 当前玩家序号
+        nLogicTS:0, // 当前状态时间戳
+        nCurSit:0, // 当前庄座位号
         nCurRate:0, // 当前底注
 	   
         //-------[房间 gameServer]-------------------------------
@@ -85,16 +86,17 @@ cc.Class({
     {
         let item = this.vectTeamList[pos];
         item.nTeamID = 0;
-        item.nMultiBanker = -1; // -1表示尚未抢庄，0表示不抢，1~4表示抢庄倍数 
-        item.nMultiMoney = 0;
-        item.nBullType = 255;
+        item.nCardType = -1; // -1表示尚未抢庄，0表示不抢，1~4表示抢庄倍数 
+        item.nLookFlag = 0;
+        item.nGiveupFlag = 255;
         item.puke = [];
         item.puke.push(0);
         item.puke.push(0);
         item.puke.push(0);
         item.nResult = 0;
-        item.nMoney = 0;
+        item.nTotalMoney = 0;
         item.nAccountID=0;
+        item.nSit = 0;        
         item.nick="";
         item.sex = 0;
         item.head=0;
@@ -118,7 +120,9 @@ cc.Class({
                 item.nCardType = 0; 
                 item.nLookFlag = 0;
                 item.nGiveupFlag = 0;
-                item.nTotalMoney = 0;                
+                item.nTotalMoney = 0;
+                item.nAccountID = 0;                
+                item.nSit = 0;
                 item.puke = [];
                 item.puke.push(0);
                 item.puke.push(0);
@@ -141,7 +145,8 @@ cc.Class({
                 item.nCardType = 0; 
                 item.nLookFlag = 0;
                 item.nGiveupFlag = 0;
-                item.nTotalMoney = 0;                
+                item.nTotalMoney = 0;    
+                item.nAccountID = 0;            
                 item.puke = [];
                 item.puke.push(0);
                 item.puke.push(0);

@@ -99,6 +99,7 @@ cc.Class({
             }
             case constDef.CONNECT_CALLBACK_STATUS.LOGON_GET_PLAYERS_BASE_INFO:
             {
+                cc.log("LOGON_GET_PLAYERS_BASE_INFO");
                 let msg = new ProtocolMessage(constDef.MESSAGE.CMD_MAIN_PLATFORM,constDef.MESSAGE.GET_PLAYERS_BASE_INFO_REQ,false);         
                 ProtocolMessage.AddVectItemInt(msg._body_msg, GlobalManager.instance.selfData.nAccountID);
                 ProtocolMessage.AddVectItemInt(msg._body_msg, GlobalManager.instance.selfData.nCurGameID);
@@ -107,7 +108,7 @@ cc.Class({
                 ProtocolMessage.AddVectItemVect(msg._body_msg);
                 for(let i=0;i<gameData.vectTeamList.length;i++)
                 {
-                    if ((gameData.vectTeamList[i].nAccountID > 0) && (gameData.vectTeamList[i].sNickName==""))
+                    if ((gameData.vectTeamList[i].nAccountID > 0) && (gameData.vectTeamList[i].nick==""))
                     {
                         ProtocolMessage.AddVectItemInt(msg._body_msg[vectIndex]._vect_value, gameData.vectTeamList[i].nAccountID);
                     }

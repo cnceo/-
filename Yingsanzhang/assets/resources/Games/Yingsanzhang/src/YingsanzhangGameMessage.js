@@ -49,19 +49,20 @@ var GameMessage = {
         {
             if(nAccountID === teamsList[i].nAccountID)
             {
-                teamsList[i].sNickName     = bodyMsg[index++]._str_value;
+                teamsList[i].nick     = bodyMsg[index++]._str_value;
                 teamsList[i].nSex          = bodyMsg[index++]._int_value;
                 teamsList[i].nFhead        = bodyMsg[index++]._int_value;
-                teamsList[i].sFcustom_head = bodyMsg[index++]._str_value;
+                teamsList[i].sFcustom_head = bodyMsg[index++]._int_value;
                 let nValH = bodyMsg[index++]._int_value;
                 let nValL = bodyMsg[index++]._int_value;
+                let nval = bodyMsg[index++]._int_value;
+                teamsList[i].nTotalMoney = bodyMsg[index++]._int_value;
                 teamsList[i].nCoinH = bodyMsg[index++]._int_value;
                 teamsList[i].nCoinL = bodyMsg[index++]._int_value;
                 break;
             }
         }
-
-        gameData.RefreshPlayerData(1);
+        gameData.RefreshPlayerData();
     },
 
      // ==========================================================================================================
@@ -538,33 +539,27 @@ var GameMessage = {
         cc.log("handler_FIGHT_BEGIN_NOTIFY");
         var bodyMsg = event.detail.msgBody;
         var instanceGlobal = event.detail.instanceGlobal;
-        var gameData = instanceGlobal.GetGameData(instanceGlobal.selfData.nCurGameID); 
-        
+        var gameData = instanceGlobal.GetGameData(instanceGlobal.selfData.nCurGameID);
+
         var index = 0;
-        gameData.ClearBattleData(true);
-
-        gameData.arrLandCards.push(bodyMsg[index++]._int_value);
-        gameData.arrLandCards.push(bodyMsg[index++]._int_value);
-        gameData.arrLandCards.push(bodyMsg[index++]._int_value);
-
-        for(let i=0;i<3;i++)
+        gameData.nCurSit =bodyMsg[index++]._int_value;; 
+        let vectList = bodyMsg[index++]._vect_value;
+        let itemCount = 5;
+        let count = vectList.length / itemCount;
+        for (let i = 0; i < count; i++)
         {
-            var index1 = 3;
-            gameData.puke[i].push(17);
-            for(let j=0;j<17;j++)
-            {
-                gameData.puke[i].push(bodyMsg[i*17+index1++]._int_value);
-            }
-        }
+            var index1 = 0;
+            var item = gameData.vectTeamList[i];
+            item.nTeamID = vectList[i * itemCount + index1++]._int_value;         
+            item.nSit    = vectList[i * itemCount + index1++]._int_value;         
+            item.puke[0] = vectList[i * itemCount + index1++]._int_value;
+            item.puke[1] = vectList[i * itemCount + index1++]._int_value;
+            item.puke[2] = vectList[i * itemCount + index1++]._int_value;
+        }     
 
         gameData.nBattleStatus = gameConstDef.FIGHT_STATUS.BEGIN;
-        if(gameData.nOpenMode == constDef.BATTLE_OPEN_MODE.MATCH)
-        {
-            gameData.nClientStatus = gameConstDef.FIGHT_STATUS.C_PLAY_BENGIN_ANIM;
-        }else
-        {
-            gameData.nClientStatus = gameConstDef.FIGHT_STATUS.C_BEGIN_SEND_CARD;
-        }
+        
+        gameData.nClientStatus = gameConstDef.FIGHT_STATUS.C_BEGIN;
         
         gameData.RefreshData();
     },   

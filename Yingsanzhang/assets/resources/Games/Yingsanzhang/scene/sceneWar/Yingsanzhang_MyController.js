@@ -18,18 +18,28 @@ cc.Class({
     onLoad: function () {
         this.refreshUI();
     },
+    exit_game: function(){
+
+         var gameData = GlobalManager.instance.GetGameData(GlobalManager.instance.selfData.nCurGameID);
+        gameData.ClearBattleData();
+        GlobalManager.instance.SocketManager.CloseSocket(constDef.SERVER_URL.game);
+        var curComp = GlobalManager.instance.load.getComponent("LoadManager");
+        curComp.Show('Yingsanzhang_home');
+
+
+    },
     follow_bet_req: function(){
 
         let score = GlobalManager.instance.GetGameData(GlobalManager.instance.selfData.nTeamID).nCurBetVal;
         let msg = new ProtocolMessage(gameConstDef.MESSAGE.CMD_MAIN_YingSanZhang,gameConstDef.MESSAGE.FOLLOW_BET_REQ,false); 
-        ProtocolMessage.AddVectItemByte(msg._body_msg, score);
+        ProtocolMessage.AddVectItemByte(msg._body_msg, 1);
         GlobalManager.instance.SocketManager.SendMessage(constDef.SERVER_URL.game, msg);
     },
     add_bet_req: function(){
 
         let score = GlobalManager.instance.GetGameData(GlobalManager.instance.selfData.nTeamID).nCurBetVal;
         let msg = new ProtocolMessage(gameConstDef.MESSAGE.CMD_MAIN_YingSanZhang,gameConstDef.MESSAGE.ADD_BET_REQ,false);           
-        ProtocolMessage.AddVectItemByte(msg._body_msg, score);
+        ProtocolMessage.AddVectItemByte(msg._body_msg, 2);
         GlobalManager.instance.SocketManager.SendMessage(constDef.SERVER_URL.game, msg);
     },
     look_card_req: function(){
@@ -65,6 +75,8 @@ cc.Class({
         let disable_url =  "Games/Yingsanzhang/res/image/sceneWar/button_disable";
         let follow_url =  "Games/Yingsanzhang/res/image/sceneWar/button_hl";
         let  tag = 1;
+
+
         if(tag > 0.5)
         {
             this.loadSpriteFrameWithUrlAndNode(follow_node,follow_url);

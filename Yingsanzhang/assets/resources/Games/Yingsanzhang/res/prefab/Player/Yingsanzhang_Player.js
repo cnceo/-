@@ -1,11 +1,12 @@
 var GlobalManager = require("GlobalManager");
 var ProtocolMessage = require("ProtocolMessage");
 var gameConstDef = require("YingsanzhangConstDef");
-
 cc.Class({
     extends: cc.Component,
     
     properties: {
+        
+        
        backGround:{
            default:null,
            type:cc.Node,
@@ -29,6 +30,10 @@ cc.Class({
        allmoney:{
            default:null,
            type:cc.Label
+       },
+       mainNode:{
+           default:null,
+           type:cc.Node 
        },
        side_node:{
            default:null,
@@ -61,15 +66,17 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        this.liewen.active = false;
-        let arr = [0,0,0];
-        // this.sendCards(arr);
+
     },
 
-        InitInfo:function(sitSeq)
+    InitInfo:function(sitSeq)
     {
         this.nSelfPos = sitSeq;
-        this.nSelfIndex = 0;
+        this.nSelfIndex = sitSeq;
+
+       this.mainNode.opacity = 0;
+       this.side_node.opacity = 0;
+
         switch(sitSeq)
         {
             case 1:
@@ -109,38 +116,53 @@ cc.Class({
         }
     },
 
-    UpDateView: function(nCurIndex,type){
-        this.nSelfIndex = nCurIndex;
-        this.RefreshView();
-
+    UpDateView: function(nCurIndex)
+    {
+        // this.nSelfIndex = nCurIndex;
+        this.RefreshView(nCurIndex);
     },
-    RefreshView: function(){
+    RefreshSideView: function(nCurIndex)
+    {
+        var gameData = GlobalManager.instance.GetGameData(GlobalManager.instance.selfData.nCurGameID);
+        let playerInfo = gameData.vectTeamList[nCurIndex];
+        if(playerInfo.nAccountID  === 0)
+        {
+            this.node.opacity = 0;
+        }
+        else
+        {
+            this.node.opacity = 255;
+            this.side_node.opacity = 255;
+        }
+    },
+    RefreshView: function()
+    {
         var gameData = GlobalManager.instance.GetGameData(GlobalManager.instance.selfData.nCurGameID);
         let playerInfo = gameData.vectTeamList[this.nSelfIndex-1];
 
         if(playerInfo.nAccountID  === 0)
         {
             this.node.opacity = 0;
-
         }
         else
         {
             this.node.opacity = 255;
+            this.mainNode.opacity = 255;
 
-            if(playerInfo.sNickName !== null) 
+            if(playerInfo.nick !== null) 
             {
-                this.nameLabel.string = playerInfo.sNickName;
+                this.nameLabel.string = playerInfo.nick;
             }
             if(playerInfo.nCoinL !== null)
             {
                 this.allmoney.string = playerInfo.nCoinL;       
             }
-            cc.loader.loadRes("Games/Yingsanzhang/res/prefab/Player/image/head/head_"+playerInfo.nFhead,cc.SpriteFrame,function(error,spriteFrame){
-                if(!error)
-                {
-                    this.headImg.spriteFrame = spriteFrame;
-                }
-            });
+            // cc.loader.loadRes("Games/Yingsanzhang/res/prefab/Player/image/head/head_"+playerInfo.nFhead,cc.SpriteFrame,function(error,spriteFrame){
+            //     if(!error)
+            //     {
+            //         this.headImg.spriteFrame = spriteFrame;
+            //     }
+            // });
 
         }
     },
@@ -217,7 +239,20 @@ cc.Class({
         }
         progressBar.progress = progress;
     },
-    sendCards: function(cards){
+    sendCards: function(){
+        var gameData = GlobalManager.instance.GetGameData(GlobalManager.instance.selfData.nCurGameID);
+        let playerInfo = gameData.vectTeamList[this.nSelfIndex-1];
+
+        if(playerInfo.nAccountID  === 0)
+        {
+           return;
+        }
+        this.side_node.opacity = 255;
+        var  cards = [];
+        cards.push[playerInfo.puke[0]];
+        cards.push[playerInfo.puke[0]];
+        cards.push[playerInfo.puke[0]];
+
         this.cards_node.active = true;
         this.cards_array = [];
         this.cards_node.removeAllChildren();
@@ -230,7 +265,7 @@ cc.Class({
         var index = 0;
         this.schedule(function() {
          this.sendCard(cards[index++]);   
-         if(index >= 3) this.showDisCard();
+        //  if(index >= 3) this.showDisCard();
         }, interval, repeat, delay);
     },
 
