@@ -1,0 +1,30 @@
+{
+	"serverBaseinfo":[
+		{"Fserver_id":4, "Fserver_ip":"203.195.129.201","Fserver_port":9004},
+		{"Fserver_id":5, "Fserver_ip":"203.195.129.201","Fserver_port":9005},
+		{"Fserver_id":6, "Fserver_ip":"203.195.129.201","Fserver_port":9006},
+		{"Fserver_id":7, "Fserver_ip":"203.195.129.201","Fserver_port":9007},
+		{"Fserver_id":8, "Fserver_ip":"203.195.129.201","Fserver_port":9008},
+		{"Fserver_id":9, "Fserver_ip":"203.195.129.201","Fserver_port":9009},
+		{"Fserver_id":12,"Fserver_ip":"203.195.129.201","Fserver_port":9012},
+		{"Fserver_id":13,"Fserver_ip":"203.195.129.201","Fserver_port":9013},
+		{"Fserver_id":14,"Fserver_ip":"203.195.129.201","Fserver_port":9014},
+		{"Fserver_id":15,"Fserver_ip":"203.195.129.201","Fserver_port":9015},
+		{"Fserver_id":17,"Fserver_ip":"203.195.129.201","Fserver_port":9017},
+		{"Fserver_id":18,"Fserver_ip":"203.195.129.201","Fserver_port":9018},
+		{"Fserver_id":19,"Fserver_ip":"203.195.129.201","Fserver_port":9019},
+		{"Fserver_id":20,"Fserver_ip":"203.195.129.201","Fserver_port":9020},
+		{"Fserver_id":21,"Fserver_ip":"203.195.129.201","Fserver_port":9021},
+		{"Fserver_id":22,"Fserver_ip":"203.195.129.201","Fserver_port":9022},
+		{"Fserver_id":23,"Fserver_ip":"203.195.129.201","Fserver_port":9023},
+		{"Fserver_id":24,"Fserver_ip":"203.195.129.201","Fserver_port":9024},
+		{"Fserver_id":27,"Fserver_ip":"203.195.129.201","Fserver_port":9027},
+		{"Fserver_id":28,"Fserver_ip":"203.195.129.201","Fserver_port":9028},
+		{"Fserver_id":29,"Fserver_ip":"203.195.129.201","Fserver_port":9029},
+		{"Fserver_id":30,"Fserver_ip":"203.195.129.201","Fserver_port":9030}
+	]
+}
+
+
+
+

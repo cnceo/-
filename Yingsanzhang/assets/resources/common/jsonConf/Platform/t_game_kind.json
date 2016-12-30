@@ -1,0 +1,40 @@
+{
+    "kindBaseinfo":[
+        {"Fkind_id":1,  "Fkind_name":"经典斗地主",  "alias":"doudizhuJD",  "Ftype_id":1,"Ftype_seq":1, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":2,  "Fkind_name":"欢乐斗地主",  "alias":"doudizhuHL",  "Ftype_id":1,"Ftype_seq":2, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":3,  "Fkind_name":"经典斗牛",    "alias":"douniuJD",    "Ftype_id":1,"Ftype_seq":3, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":4,  "Fkind_name":"百人斗牛",    "alias":"douniuBR",    "Ftype_id":1,"Ftype_seq":4, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":5,  "Fkind_name":"火炮联盟",    "alias":"cannonWar",   "Ftype_id":5,"Ftype_seq":1, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":6,  "Fkind_name":"红包大战",    "alias":"hongbao",     "Ftype_id":5,"Ftype_seq":2, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":7,  "Fkind_name":"大众麻将",    "alias":"MJDazhong",   "Ftype_id":2,"Ftype_seq":1, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":8,  "Fkind_name":"血流成河",    "alias":"MJXueliu",    "Ftype_id":2,"Ftype_seq":2, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":9,  "Fkind_name":"血战到底",    "alias":"MJXuezhan",   "Ftype_id":2,"Ftype_seq":3, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":10, "Fkind_name":"广东麻将",    "alias":"MJGuangdong", "Ftype_id":2,"Ftype_seq":4, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":11, "Fkind_name":"二人雀神",    "alias":"MJErren",     "Ftype_id":2,"Ftype_seq":5, "version":"1.0.0", "desc":"xxxxxxx"},
+        {"Fkind_id":13, "Fkind_name":"赢三张",    "alias":"Yingsanzhang",  "Ftype_id":1,"Ftype_seq":6, "version":"1.0.0", "desc":"xxxxxxx"}
+    ],
+
+    "doudizhuJD":
+    {
+        "doudizhuJD_home":[
+            {"type":"SpriteFrame","url":"Games/doudizhu/base/background"},
+            {"type":"SpriteFrame","url":"Games/doudizhu/base/logo"},
+            {"type":"SpriteFrame","url":"Games/doudizhu/base/progressBar"},
+            {"type":"SpriteFrame","url":"Games/doudizhu/base/progressBG"}
+        ]
+    },
+
+    "douniuJD":
+    {
+        "douniuJD_home":[
+            {"type":"Spine","url":"card/back"},
+            {"type":"SpriteFrame","url":"card/test"}
+        ]
+    },  
+    "Yingsanzhang":
+    {
+        "Yingsanzhang_home":[
+   
+        ]
+    }
+}

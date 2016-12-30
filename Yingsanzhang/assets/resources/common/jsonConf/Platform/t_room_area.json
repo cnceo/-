@@ -1,0 +1,24 @@
+{
+	"areaBaseinfo":[
+		{"Farea_id":1,  "Farea_name":"七豆专区","Fkind_id":1,"Fkind_seq":1,"Fdesc":""},
+		{"Farea_id":2,  "Farea_name":"比赛专区","Fkind_id":1,"Fkind_seq":2,"Fdesc":""},
+    {"Farea_id":3,  "Farea_name":"七豆专区","Fkind_id":2,"Fkind_seq":1,"Fdesc":""},
+		{"Farea_id":4,  "Farea_name":"比赛专区","Fkind_id":2,"Fkind_seq":2,"Fdesc":""},
+		{"Farea_id":5,  "Farea_name":"七豆专区","Fkind_id":3,"Fkind_seq":1,"Fdesc":""},
+		{"Farea_id":6,  "Farea_name":"比赛专区","Fkind_id":3,"Fkind_seq":2,"Fdesc":""},
+		{"Farea_id":7,  "Farea_name":"七豆专区","Fkind_id":4,"Fkind_seq":1,"Fdesc":""},
+		{"Farea_id":8,  "Farea_name":"比赛专区","Fkind_id":4,"Fkind_seq":2,"Fdesc":""},
+		{"Farea_id":9,  "Farea_name":"速配战区","Fkind_id":5,"Fkind_seq":1,"Fdesc":""},
+		{"Farea_id":10, "Farea_name":"速配专区","Fkind_id":6,"Fkind_seq":1,"Fdesc":""},
+		{"Farea_id":11, "Farea_name":"七豆专区","Fkind_id":7,"Fkind_seq":1,"Fdesc":""},
+		{"Farea_id":12, "Farea_name":"七豆专区","Fkind_id":13,"Fkind_seq":1,"Fdesc":""},
+		{"Farea_id":13, "Farea_name":"七豆专区","Fkind_id":8,"Fkind_seq":1,"Fdesc":""},
+		{"Farea_id":14, "Farea_name":"七豆专区","Fkind_id":9,"Fkind_seq":1,"Fdesc":""}
+	]
+}
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+{
+	"typeBaseinfo":[
+		{"Fkind_id":1,"Ftype_name":"牌类","Fsort_seq":1},
+		{"Fkind_id":2,"Ftype_name":"麻将","Fsort_seq":2},
+		{"Fkind_id":3,"Ftype_name":"棋类","Fsort_seq":3},
+		{"Fkind_id":4,"Ftype_name":"彩票","Fsort_seq":4},
+		{"Fkind_id":5,"Ftype_name":"休闲","Fsort_seq":5},
+		{"Fkind_id":6,"Ftype_name":"角色","Fsort_seq":6}
+	]
+}

@@ -1,0 +1,24 @@
+{
+	"roomBaseinfo":[
+		{"Froom_id":1,  "Froom_name":"","Fnode_id":1, "Fnode_seq":1,"Fserver_id":14,"Fdesc":""},
+		{"Froom_id":2,  "Froom_name":"","Fnode_id":2, "Fnode_seq":1,"Fserver_id":13,"Fdesc":""},
+		{"Froom_id":3,  "Froom_name":"","Fnode_id":3, "Fnode_seq":1,"Fserver_id":9, "Fdesc":""},
+		{"Froom_id":4,  "Froom_name":"","Fnode_id":4, "Fnode_seq":1,"Fserver_id":12,"Fdesc":""},
+		{"Froom_id":5,  "Froom_name":"","Fnode_id":5, "Fnode_seq":1,"Fserver_id":5, "Fdesc":""},
+		{"Froom_id":6,  "Froom_name":"","Fnode_id":6, "Fnode_seq":1,"Fserver_id":17,"Fdesc":""},
+		{"Froom_id":7,  "Froom_name":"","Fnode_id":7, "Fnode_seq":1,"Fserver_id":18,"Fdesc":""},
+		{"Froom_id":8,  "Froom_name":"","Fnode_id":8, "Fnode_seq":1,"Fserver_id":19,"Fdesc":""},
+		{"Froom_id":9,  "Froom_name":"","Fnode_id":9, "Fnode_seq":1,"Fserver_id":20,"Fdesc":""},
+		{"Froom_id":10, "Froom_name":"","Fnode_id":10,"Fnode_seq":1,"Fserver_id":21,"Fdesc":""},
+		{"Froom_id":11, "Froom_name":"","Fnode_id":11,"Fnode_seq":1,"Fserver_id":22,"Fdesc":""},
+		{"Froom_id":12, "Froom_name":"","Fnode_id":12,"Fnode_seq":1,"Fserver_id":23,"Fdesc":""},
+		{"Froom_id":13, "Froom_name":"","Fnode_id":13,"Fnode_seq":1,"Fserver_id":24,"Fdesc":""},
+		{"Froom_id":14, "Froom_name":"","Fnode_id":14,"Fnode_seq":1,"Fserver_id":28,"Fdesc":""},
+		{"Froom_id":15, "Froom_name":"","Fnode_id":15,"Fnode_seq":1,"Fserver_id":29,"Fdesc":""},
+		{"Froom_id":16, "Froom_name":"","Fnode_id":16,"Fnode_seq":1,"Fserver_id":30,"Fdesc":""}
+	]                                                                          
+}                                                                            
+
+
+
+
