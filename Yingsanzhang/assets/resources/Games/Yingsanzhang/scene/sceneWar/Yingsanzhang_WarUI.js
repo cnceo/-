@@ -27,9 +27,9 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
 
-        // let msg = new ProtocolMessage(constDef.MESSAGE.CMD_MAIN_GAME,constDef.MESSAGE.FIGHT_READY_REQ,false); 
-        // ProtocolMessage.AddVectItemByte(msg._body_msg, 1);
-        // GlobalManager.instance.SocketManager.SendMessage(constDef.SERVER_URL.game, msg);
+        let msg = new ProtocolMessage(constDef.MESSAGE.CMD_MAIN_GAME,constDef.MESSAGE.FIGHT_READY_REQ,false); 
+        ProtocolMessage.AddVectItemByte(msg._body_msg, 1);
+        GlobalManager.instance.SocketManager.SendMessage(constDef.SERVER_URL.game, msg);
 
     },
     RefreshUI:function(){
@@ -47,7 +47,7 @@ cc.Class({
         }
     },
     
-    RefreshPlayerData: function()
+    RefreshPlayerData: function(type)
     {
         this.NodePlayersUI.getComponent("Yingsanzhang_PlayersUI").initPlayers();
         cc.log("War_RefreshPlayerData");

@@ -40,7 +40,7 @@ cc.Class({
         nBattleID:0,
         nLogicStatus:0,//状态
         nLogicTS:0, // 当前状态时间戳
-        nCurSit:0, // 当前庄座位号
+        nCurSit:0, // 当前座位号
         nCurRate:0, // 当前底注
 	   
         //-------[房间 gameServer]-------------------------------

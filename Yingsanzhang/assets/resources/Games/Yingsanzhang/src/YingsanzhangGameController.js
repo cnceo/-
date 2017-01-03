@@ -116,7 +116,6 @@ cc.Class({
                 GlobalManager.instance.SendLogonMsg(msg);
                 break;
             }
-
             // ----------------------
             case gameConstDef.CONNECT_CALLBACK_STATUS.HOME_ENTER_ROOM:
             {

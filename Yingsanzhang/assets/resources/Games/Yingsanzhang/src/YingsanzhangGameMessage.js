@@ -57,8 +57,8 @@ var GameMessage = {
                 let nValL = bodyMsg[index++]._int_value;
                 let nval = bodyMsg[index++]._int_value;
                 teamsList[i].nTotalMoney = bodyMsg[index++]._int_value;
-                teamsList[i].nCoinH = bodyMsg[index++]._int_value;
-                teamsList[i].nCoinL = bodyMsg[index++]._int_value;
+                teamsList[i].ncoinH = bodyMsg[index++]._int_value;
+                teamsList[i].ncoinL = bodyMsg[index++]._int_value;
                 break;
             }
         }
@@ -363,86 +363,33 @@ var GameMessage = {
         cc.log("handler_ENTER_BATTLE_NOTIFY");        
         var bodyMsg = event.detail.msgBody;
         var instanceGlobal = event.detail.instanceGlobal;
-        var gameData = instanceGlobal.GetGameData(instanceGlobal.selfData.nCurGameID);
 
         let index = 0;
         let nBattleID = bodyMsg[index++]._int_value;
-        if(gameData.nOpenMode == constDef.BATTLE_OPEN_MODE.MATCH)
+        if (nBattleID == instanceGlobal.selfData.nBattleID)
         {
-            var  nMatchStatus = bodyMsg[index++]._int_value;
-        }
-        let vectList = bodyMsg[index++]._vect_value;
-        
-        if(gameData.nOpenMode == constDef.BATTLE_OPEN_MODE.MATCH)
-        {
-            let itemCount = 4;
+            let vectList = bodyMsg[index++]._vect_value;
+            let itemCount = 2;
             let count = vectList.length / itemCount;
-            var teamIds = [];
-            for (let i=0; i < count; i++) 
+            for (let i = 0; i < count; i++) 
             {
                 let nTeamID = vectList[i * itemCount + 0]._int_value;
                 let nSit = vectList[i * itemCount + 1]._int_value;
-                let nAccountID = vectList[i * itemCount + 2]._int_value;
-                let nScore = vectList[i * itemCount + 3]._int_value;
-                if(nAccountID == instanceGlobal.selfData.nAccountID)
-                {   
-                        gameData.ClearBattleData();
-                        gameData.nBattleID = nBattleID;
-                        gameData.nMatchStatus = nMatchStatus;
-                        gameData.nTeamID = nTeamID;
-                        break;
-                }
-            }
-            if(gameData.nBattleID == nBattleID)
-            {
-                
-                for(let j = 0; j < count; j++)
-                {
-                    let nTeamID = vectList[j * itemCount + 0]._int_value;
-                    let nSit = vectList[j * itemCount + 1]._int_value;
-                    let nScore = vectList[j * itemCount + 3]._int_value;
-                    var teamItem = gameData.vectTeamList[nSit-1];
-                    teamItem.nTeamID = nTeamID;
-                    teamItem.nScore = nScore;
-                    teamIds.push(nTeamID);
-                }
-                gameData.initCurGameRemainCount();
-                //获取队伍成员
-                let msg = new ProtocolMessage(constDef.MESSAGE.CMD_MAIN_GAME,constDef.MESSAGE.GET_TEAM_MEMBERS_REQ,false); 
-                let vectIndex = 0;
-                ProtocolMessage.AddVectItemVect(msg._body_msg);
-                for(let t=0;t<teamIds.length;t++)
-                {
-                    ProtocolMessage.AddVectItemInt(msg._body_msg[vectIndex]._vect_value, teamIds[t]);
-                }
-                instanceGlobal.SocketManager.SendMessage(constDef.SERVER_URL.game, msg);
 
-                var curComp = instanceGlobal.load.getComponent("LoadManager");
-                curComp.Show('Yingsanzhang_war');
-            }
-        }else
-        {
-            let itemCount = 2;
-            let count = vectList.length / itemCount;
-             if (nBattleID == gameData.nBattleID)
-            {
-                for (let i = 0; i < count; i++) 
+                if (nTeamID !== instanceGlobal.selfData.nTeamID)
                 {
-                    let nTeamID = vectList[i * itemCount + 0]._int_value;
-                    let nSit = vectList[i * itemCount + 1]._int_value;
-                    if (nTeamID !== gameData.nTeamID)
-                    {
-                        var teamItem = gameData.vectTeamList[nSit-1];
-                        teamItem.nTeamID = nTeamID;
-                        let msg = new ProtocolMessage(constDef.MESSAGE.CMD_MAIN_GAME,constDef.MESSAGE.GET_TEAM_MEMBERS_REQ,false); 
-                        let vectIndex = 0;
-                        ProtocolMessage.AddVectItemVect(msg._body_msg);
-                        ProtocolMessage.AddVectItemInt(msg._body_msg[vectIndex]._vect_value, nTeamID);
-                        instanceGlobal.SocketManager.SendMessage(constDef.SERVER_URL.game, msg);             
-                    }
+                    var item = instanceGlobal.selfData.battleTeams[nSit-1];
+                    item.nTeamID = nTeamID;
+
+                    let msg = new ProtocolMessage(constDef.MESSAGE.CMD_MAIN_GAME,constDef.MESSAGE.GET_TEAM_MEMBERS_REQ,false); 
+                    let vectIndex = 0;
+                    ProtocolMessage.AddVectItemVect(msg._body_msg);
+                    ProtocolMessage.AddVectItemInt(msg._body_msg[vectIndex]._vect_value, nTeamID);
+                    instanceGlobal.SocketManager.SendMessage(constDef.SERVER_URL.game, msg);                    
                 }
             }
         }
+        
     },
     handler_ENTER_BATTLE_SUCCESS:function(event)
     {
@@ -451,12 +398,10 @@ var GameMessage = {
         var instanceGlobal = event.detail.instanceGlobal;
         var gameData = instanceGlobal.GetGameData(instanceGlobal.selfData.nCurGameID);
         gameData.ClearBattleData();
-
         if(bodyMsg.length > 0)
         {
             gameData.InitBattleData(bodyMsg);
         }
-
         var curComp = instanceGlobal.load.getComponent("LoadManager");
         curComp.Show('Yingsanzhang_war');
     },
