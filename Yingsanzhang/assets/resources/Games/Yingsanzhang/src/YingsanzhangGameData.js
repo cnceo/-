@@ -169,7 +169,7 @@ cc.Class({
     InitBattleData:function(bodyMsg)
     {
         let index = 0;
-        this.nAccountID = bodyMsg[index++]._int_value;
+        this.nTeamID = bodyMsg[index++]._int_value;
         this.nBattleID = bodyMsg[index++]._int_value;
         this.nLogicStatus = bodyMsg[index++]._int_value;
         this.nLogicTS = bodyMsg[index++]._int_value;
@@ -227,8 +227,8 @@ cc.Class({
         var WarUI = Canvas.getComponent("Yingsanzhang_WarUI");
         if (WarUI) 
         {
-            if(nDataType==0) WarUI.RefreshUI();
-            else if(nDataType == 1)WarUI.RefreshEndUI();
+            if(nDataType==0) WarUI.onReady();
+            else if(nDataType == 1)WarUI.RefreshPlayerData();
         }
     },
     RefreshPlayerData:function(nDataType)

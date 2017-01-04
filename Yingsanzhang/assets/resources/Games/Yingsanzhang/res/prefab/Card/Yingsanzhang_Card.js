@@ -29,27 +29,41 @@ var CardController = cc.Class({
     onLoad: function () 
     {
     },
+    InitCardInfo: function(val){
+        this.cardValue = val;
+        this.SetCardInfo(0);
+    },
+    SetOpenCard: function(){
+        this.SetCardInfo(this.cardValue);
+    },
     SetDisCard:function(){
+        
+        let cardID_image = this.cardID_Img;
+        let small_type_image = this.small_type_Img;
+        let big_type_image = this.big_type_Img;
+
+        cardID_image.node.opacity = 0;
+        small_type_image.node.opacity = 0;
+        big_type_image.node.opacity = 0;
 
         let face_url = "Games/Yingsanzhang/res/prefab/Card/image/" + "backGray";
         cc.log("SetDisCard",face_url);
         let face_image = this.face_Img;
+
         cc.loader.loadRes(face_url, cc.SpriteFrame, function (error, spriteFrame) {
             if (!error) {
                 face_image.spriteFrame = spriteFrame;
             }
         });
-
     },
     SetCardInfo:function(val)
     {
-        this.cardValue = val;
         let face_image = this.face_Img;
         let cardID_image = this.cardID_Img;
         let small_type_image = this.small_type_Img;
         let big_type_image = this.big_type_Img;
 
-        if ((val === 0) || (val >= 0x50))
+        if ((val === 0) || (val >= 0x50)||(val == undefined))
         {
             cardID_image.node.opacity = 0;
             small_type_image.node.opacity = 0;

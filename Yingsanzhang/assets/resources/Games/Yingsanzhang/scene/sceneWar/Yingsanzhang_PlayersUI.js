@@ -38,22 +38,21 @@ cc.Class({
     },
     initPlayers:function()
     {
-        // var gameData = GlobalManager.instance.GetGameData(GlobalManager.instance.selfData.nCurGameID);
-        // var myTeamID = gameData.nTeamID;
-        // let nSelfIndex = 0;
-        // for (nSelfIndex=0; nSelfIndex<gameData.vectTeamList.length; nSelfIndex++)
-        // {
-        //     if (gameData.vectTeamList[nSelfIndex].nTeamID == myTeamID) break;
-        // }
-        // if (nSelfIndex == gameData.vectTeamList.length) return;
+        var gameData = GlobalManager.instance.GetGameData(GlobalManager.instance.selfData.nCurGameID);
+        var myTeamID = gameData.nTeamID;
+        let nSelfIndex = 0;
+        for (nSelfIndex=0; nSelfIndex<gameData.vectTeamList.length; nSelfIndex++)
+        {
+            if (gameData.vectTeamList[nSelfIndex].nTeamID == myTeamID) break;
+        }
+        if (nSelfIndex == gameData.vectTeamList.length) return;
 
-        // let nCurIndex = nSelfIndex;
+        let nCurIndex = nSelfIndex;
         for(let i=0; i<this.playersArray.length; i++)
         {
             let playerComp = this.playersArray[i].getComponent("Yingsanzhang_Player");
-            // playerComp.UpDateView(nCurIndex+1);   
-            playerComp.UpDateView(i);
-            // nCurIndex = (nCurIndex>=2)?0:(nCurIndex+1);
+            playerComp.UpDateView(nCurIndex+1);   
+            nCurIndex = (nCurIndex>=4)?0:(nCurIndex+1);
         }
     },
     sendCard: function(){
@@ -66,6 +65,47 @@ cc.Class({
         }        
         
     },
+    lookCard: function(){
+        for(let i=0; i<this.playersArray.length; i++)
+        {
+            let playerComp = this.playersArray[i].getComponent("Yingsanzhang_Player");
+            playerComp.showOpenCard();
+        }  
+    },
+    disCard: function(){
+        for(let i=0; i<this.playersArray.length; i++)
+        {
+            let playerComp = this.playersArray[i].getComponent("Yingsanzhang_Player");
+            playerComp.showDisCard();
+        }          
+    },
+    loseCard: function(){
+        for (let i = 0; i < this.playersArray.length; i++) {
+            let playerComp = this.playersArray[i].getComponent("Yingsanzhang_Player");
+            playerComp.showLoseCard();
+        }  
+    },
+    compareCard: function(){
+        var gameData = GlobalManager.instance.GetGameData(GlobalManager.instance.selfData.nCurGameID);
+        // node.on(cc.Node.EventType.TOUCH_START, callback, this.node);
+        for (let i = 0; i < this.playersArray.length; i++) {
+            let playerNode = this.playersArray[i];
+            let playerNode_js = playerNode.getComponent("");
+            let compareNode = playerNode.getChildByName("compareNode");
+            if (playerNode_js.nSelfPos != gameData.GetSelfSit()) 
+            {
+                compareNode.active = true;
+                compareNode.on(cc.Node.EventType.TOUCH_START, callback, this);
+            }
+
+        }          
+    },
+    callback: function(event){
+        let target  = event.target;
+        var parentNode = target.parent;
+        let comp = parentNode.getComponent("Yingsanzhang_Player");
+        cc.log("cc.log",comp.cardValue);
+},
     selfFollowBet: function()
     {
         this.addBetFromPos(0,1000,1);

@@ -3073,6 +3073,9 @@
       "__id__": 2
     },
     "_enabled": true,
+    "timeLabel": {
+      "__id__": 47
+    },
     "NodePlayersUI": {
       "__id__": 5
     },

@@ -16,7 +16,7 @@ cc.Class({
     },
 
     onLoad: function () {
-        this.refreshUI();
+        this.initConsole();
     },
     exit_game: function(){
 
@@ -63,8 +63,8 @@ cc.Class({
         ProtocolMessage.AddVectItemByte(msg._body_msg, 1);
         GlobalManager.instance.SocketManager.SendMessage(constDef.SERVER_URL.game, msg);        
     },
-    refreshUI: function(){
-        
+    initConsole: function(){
+
         var follow_node = this.operation_node.getChildByName("follow_bet");    
         var add_node = this.operation_node.getChildByName("add_bet");    
         var look_node = this.operation_node.getChildByName("look_card");    
@@ -75,8 +75,7 @@ cc.Class({
         let disable_url =  "Games/Yingsanzhang/res/image/sceneWar/button_disable";
         let follow_url =  "Games/Yingsanzhang/res/image/sceneWar/button_hl";
         let  tag = 1;
-
-
+        
         if(tag > 0.5)
         {
             this.loadSpriteFrameWithUrlAndNode(follow_node,follow_url);

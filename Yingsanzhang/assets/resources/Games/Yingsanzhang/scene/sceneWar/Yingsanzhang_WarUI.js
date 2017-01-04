@@ -10,18 +10,10 @@ cc.Class({
 
     properties: {
 
+        timeLabel: cc.Label,
         NodePlayersUI:cc.Node,
         NodeMyControllerUI:cc.Node,
-        // foo: {
-        //    default: null,      // The default value will be used only when the component attaching
-        //                           to a node for the first time
-        //    url: cc.Texture2D,  // optional, default is typeof default
-        //    serializable: true, // optional, default is true
-        //    visible: true,      // optional, default is true
-        //    displayName: 'Foo', // optional
-        //    readonly: false,    // optional, default is false
-        // },
-        // ...
+
     },
 
     // use this for initialization
@@ -32,29 +24,32 @@ cc.Class({
         GlobalManager.instance.SocketManager.SendMessage(constDef.SERVER_URL.game, msg);
 
     },
-    RefreshUI:function(){
-        cc.log("RefreshUI");
-        this.NodePlayersUI.getComponent("Yingsanzhang_PlayersUI").initPlayers();
 
-        var gameData = GlobalManager.instance.GetGameData(GlobalManager.instance.selfData.nCurGameID);
+        onReady:function()
+    {
+        var curScene = cc.director.getScene();
 
-        if(gameData.nBattleStatus == gameConstDef.FIGHT_STATUS.BEGIN)
-        {
-            if(gameData.nClientStatus == gameConstDef.FIGHT_STATUS.C_BEGIN)
-            {
-                this.NodePlayersUI.getComponent("Yingsanzhang_PlayersUI").sendCard();        
-            }
-        }
+        cc.find("Canvas/Players", curScene).getComponent("Yingsanzhang_PlayersUI").initPlayers();
+        cc.find("Canvas/MyController", curScene).getComponent("Yingsanzhang_MyController").initConsole();
+        // cc.find("Canvas/tips", curScene).getComponent("TipsController").ShowTipsIF();
+
+        cc.find("Canvas/Players", curScene).getComponent("Yingsanzhang_PlayersUI").sendCard();        
+
     },
     
     RefreshPlayerData: function(type)
     {
-        this.NodePlayersUI.getComponent("Yingsanzhang_PlayersUI").initPlayers();
-        cc.log("War_RefreshPlayerData");
+        var curScene = cc.director.getScene();
+        cc.find("Canvas/Players", curScene).getComponent("Yingsanzhang_PlayersUI").initPlayers();
 
     },
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-
+        var date = new Date(GlobalManager.instance.GetRightTime()*1000);
+        let sHour = date.getHours().toString();
+        let sMin = date.getMinutes().toString();
+        if (sHour.length == 1) sHour = "0" + sHour;
+        if (sMin.length == 1) sMin = "0" + sMin;
+        this.timeLabel.string = sHour+":"+sMin; 
     },
 });
